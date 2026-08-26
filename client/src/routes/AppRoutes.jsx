@@ -1,7 +1,10 @@
 import { AuthContext } from '../context/AuthContext';
 import Layout from '../components/Layout';
 import Login from '../pages/Login';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { useContext } from 'react';
+import Register from '../pages/Register';
+import Dashboard from '../pages/Dashboard';
 
 
 const ProtectedRoute = ({ children }) => {
@@ -16,6 +19,8 @@ return(
     <Routes>
         <Route path="/login" element={<Login />} />
          <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}></Route>
+           <Route path="/register" element={<Register />} />
+            <Route index element={<Dashboard />} />
     </Routes>
 );
 };
