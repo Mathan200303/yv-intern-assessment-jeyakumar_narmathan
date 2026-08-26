@@ -1,10 +1,10 @@
 import dotenv from 'dotenv';
-dotenv.config();
 import connectDB from './src/config/db.js';
 import bcrypt from 'bcrypt';
 import User from './src/models/User.js';
 import MembershipType from './src/models/MembershipType.js';
 
+dotenv.config();
 const seedDB = async () => {
   try {
     await connectDB();
@@ -49,4 +49,4 @@ const seedDB = async () => {
   }
 };
 
-seedDB();
+
