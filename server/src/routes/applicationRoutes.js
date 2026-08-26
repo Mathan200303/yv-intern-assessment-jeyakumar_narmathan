@@ -2,6 +2,7 @@ import express from 'express';
 import { submitApplication,  getApplications, approveApplication, rejectApplication } from '../controllers/applicationController.js';
 import { protect } from '../middleware/authMiddleware.js';
 import { checkPermission } from '../middleware/permissionMiddleware.js';
+import User from '../models/User.js';
 
 const router = express.Router();
 router.use(protect);
@@ -13,7 +14,6 @@ const viewAppCheck = async (req, res, next) => {
     return next();
   }
   try {
-    const User = require('../models/User');
     const user = await User.findById(req.user.id).populate('officerRoleId');
     if (user && user.userType === 'OFFICER' && user.officerRoleId?.permissions?.includes('application.view')) {
       return next();
