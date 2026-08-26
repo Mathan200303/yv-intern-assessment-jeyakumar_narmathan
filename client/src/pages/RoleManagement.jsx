@@ -49,7 +49,7 @@ const RoleManagement = () => {
     );
   };
 
-  const createRole = async (e) => {
+  const handleCreateRole  = async (e) => {
     e.preventDefault();
     try {
       const res = await createRole({
@@ -67,7 +67,7 @@ const RoleManagement = () => {
     }
   };
 
-  const assignRole = async (e) => {
+  const handleAssignRole  = async (e) => {
     e.preventDefault();
     if (!userIdToAssign || !roleIdToAssign) return alert('Please select a user and a role.');
     try {
@@ -97,7 +97,7 @@ const RoleManagement = () => {
     );
   };
 
-  const updateRole = async (e) => {
+  const HandleupdateRole = async (e) => {
     e.preventDefault();
     if (!editRoleId) return alert('Please select a role to edit.');
     try {
@@ -113,7 +113,7 @@ const RoleManagement = () => {
     <div className="space-y-6">
       <div className="bg-white p-6 rounded shadow">
         <h2 className="text-2xl font-bold mb-4">Create Officer Role</h2>
-        <form onSubmit={createRole} className="space-y-4">
+        <form onSubmit={handleCreateRole } className="space-y-4">
           <input 
             type="text" placeholder="Role Name" required value={roleName} 
             onChange={e => setRoleName(e.target.value)} className="border p-2 w-full rounded" 
@@ -145,7 +145,7 @@ const RoleManagement = () => {
 
       <div className="bg-white p-6 rounded shadow">
         <h2 className="text-2xl font-bold mb-4">Edit Role Permissions</h2>
-        <form onSubmit={updateRole} className="space-y-4">
+        <form onSubmit={HandleupdateRole} className="space-y-4">
           <select 
             value={editRoleId} 
             onChange={handleEditRoleChange} 
@@ -182,7 +182,7 @@ const RoleManagement = () => {
 
       <div className="bg-white p-6 rounded shadow">
         <h2 className="text-2xl font-bold mb-4">Assign Role to User</h2>
-        <form onSubmit={assignRole} className="space-x-4 flex">
+        <form onSubmit={handleAssignRole } className="space-x-4 flex">
           <select 
             value={userIdToAssign} 
             onChange={e => setUserIdToAssign(e.target.value)} 

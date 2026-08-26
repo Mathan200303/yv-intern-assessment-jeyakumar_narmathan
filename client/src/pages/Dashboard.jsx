@@ -71,7 +71,7 @@ const Dashboard = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const submitApplication = async (e) => {
+  const handleSubmitApplication  = async (e) => {
     e.preventDefault();
     setSubmitError('');
     try {
@@ -133,7 +133,7 @@ const Dashboard = () => {
       {canSubmitApp && (
         <div className="bg-white p-6 rounded shadow">
           <h2 className="text-xl font-bold mb-4">Submit Application</h2>
-          <form onSubmit={submitApplication} className="space-y-4">
+          <form onSubmit={handleSubmitApplication} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <select name="applicantType" value={formData.applicantType} onChange={handleFormChange} className="border p-2 rounded">
                 <option value="INDIVIDUAL">Individual</option>
