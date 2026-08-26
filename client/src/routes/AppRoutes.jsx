@@ -6,6 +6,8 @@ import { useContext } from 'react';
 import Register from '../pages/Register';
 import Dashboard from '../pages/Dashboard';
 import RoleManagement from '../pages/RoleManagement';
+import MembersList from '../pages/MembersList';
+import AuditLogs from '../pages/AuditLogs';
 
 
 const ProtectedRoute = ({ children }) => {
@@ -19,10 +21,13 @@ const AppRoutes = ()=>{
 return(
     <Routes>
         <Route path="/login" element={<Login />} />
-         <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}></Route>
            <Route path="/register" element={<Register />} />
+            <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
             <Route index element={<Dashboard />} />
          <Route path="roles" element={<RoleManagement />} />
+            <Route path="members" element={<MembersList />} />
+          <Route path="audit" element={<AuditLogs />} />
+            </Route>
     </Routes>
 );
 };
