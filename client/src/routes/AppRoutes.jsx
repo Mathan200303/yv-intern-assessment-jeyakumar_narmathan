@@ -5,6 +5,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { useContext } from 'react';
 import Register from '../pages/Register';
 import Dashboard from '../pages/Dashboard';
+import RoleManagement from '../pages/RoleManagement';
 
 
 const ProtectedRoute = ({ children }) => {
@@ -21,6 +22,7 @@ return(
          <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}></Route>
            <Route path="/register" element={<Register />} />
             <Route index element={<Dashboard />} />
+         <Route path="roles" element={<RoleManagement />} />
     </Routes>
 );
 };
