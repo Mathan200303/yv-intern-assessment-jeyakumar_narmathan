@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const officerRoleSchema = new mongoose.Schema({
   name: {
@@ -21,4 +21,4 @@ const officerRoleSchema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
-module.exports = mongoose.model('OfficerRole', officerRoleSchema);
+export default mongoose.model('OfficerRole', officerRoleSchema);

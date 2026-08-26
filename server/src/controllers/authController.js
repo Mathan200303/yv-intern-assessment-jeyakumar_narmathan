@@ -1,8 +1,8 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import User from '../models/User.js';
 
-const register = async (req, res, next) => {
+export const register = async (req, res, next) => {
   try {
     const { fullName, email, password } = req.body;
 
@@ -55,7 +55,7 @@ const register = async (req, res, next) => {
   }
 };
 
-const login = async (req, res, next) => {
+export const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
@@ -114,7 +114,7 @@ const login = async (req, res, next) => {
   }
 };
 
-const getMe = async (req, res, next) => {
+export const getMe = async (req, res, next) => {
   try {
     const user = await User.findById(req.user.id).select('-passwordHash').populate('officerRoleId');
     if (!user) {
@@ -151,7 +151,7 @@ const getMe = async (req, res, next) => {
 };
 
 
-const getUsers = async (req, res, next) => {
+export const getUsers = async (req, res, next) => {
   try {
     const users = await User.find({ userType: { $ne: 'CHAIRMAN' } }).select('fullName email userType');
     res.status(200).json({ success: true, data: users });
@@ -160,9 +160,3 @@ const getUsers = async (req, res, next) => {
   }
 };
 
-module.exports = {
-  register,
-  login,
-  getMe,
-  getUsers
-};

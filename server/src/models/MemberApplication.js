@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const memberApplicationSchema = new mongoose.Schema({
   userId: {
@@ -53,4 +53,4 @@ const memberApplicationSchema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
-module.exports = mongoose.model('MemberApplication', memberApplicationSchema);
+export default mongoose.model('MemberApplication', memberApplicationSchema);

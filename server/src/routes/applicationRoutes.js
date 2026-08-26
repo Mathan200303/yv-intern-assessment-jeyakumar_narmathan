@@ -1,9 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const { submitApplication,  getApplications, approveApplication, rejectApplication } = require('../controllers/applicationController');
-const { protect } = require('../middleware/authMiddleware');
-const { checkPermission } = require('../middleware/permissionMiddleware');
+import express from 'express';
+import { submitApplication,  getApplications, approveApplication, rejectApplication } from '../controllers/applicationController.js';
+import { protect } from '../middleware/authMiddleware.js';
+import { checkPermission } from '../middleware/permissionMiddleware.js';
 
+const router = express.Router();
 router.use(protect);
 
 router.post('/', submitApplication);
@@ -28,4 +28,4 @@ router.get('/', viewAppCheck, getApplications);
 router.patch('/:id/approve', checkPermission('application.approve'), approveApplication);
 router.patch('/:id/reject', checkPermission('application.reject'), rejectApplication);
 
-module.exports = router;
+export default router;

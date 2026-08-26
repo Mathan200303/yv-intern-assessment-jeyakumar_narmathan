@@ -1,6 +1,6 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
-const protect = (req, res, next) => {
+export const protect = (req, res, next) => {
   let token;
 
   if (
@@ -30,4 +30,4 @@ const protect = (req, res, next) => {
   }
 };
 
-module.exports = { protect };
+

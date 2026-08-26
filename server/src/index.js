@@ -1,26 +1,28 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const connectDB = require('./config/db');
 
+import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import connectDB from './config/db.js';
+
+dotenv.config();
 connectDB();
-
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
 
-const authRoutes = require('./routes/authRoutes');
-const roleRoutes = require('./routes/roleRoutes');
-const permissionRoutes = require('./routes/permissionRoutes');
-const auditRoutes = require('./routes/auditRoutes');
-const applicationRoutes = require('./routes/applicationRoutes');
-const memberRoutes = require('./routes/memberRoutes');
-const membershipTypeRoutes = require('./routes/membershipTypeRoutes');
-const errorHandler = require('./middleware/errorMiddleware');
 
-const ENDPOINTS = require('./utils/endpoints');
+import authRoutes from './routes/authRoutes.js';
+import roleRoutes from './routes/roleRoutes.js';
+import permissionRoutes from './routes/permissionRoutes.js';
+import auditRoutes from './routes/auditRoutes.js';
+import applicationRoutes from './routes/applicationRoutes.js';
+import memberRoutes from './routes/memberRoutes.js';
+import membershipTypeRoutes from './routes/membershipTypeRoutes.js';
+import errorHandler from './middleware/errorMiddleware.js';
+
+import ENDPOINTS from './utils/endpoints.js';
 
 app.use(ENDPOINTS.API_PREFIX + ENDPOINTS.AUTH, authRoutes);
 app.use(ENDPOINTS.API_PREFIX + ENDPOINTS.ROLES, roleRoutes);

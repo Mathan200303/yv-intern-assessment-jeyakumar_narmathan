@@ -1,7 +1,7 @@
-const User = require('../models/User');
-const OfficerRole = require('../models/OfficerRole');
+import User from '../models/User.js';
+import OfficerRole from '../models/OfficerRole.js';
 
-const checkPermission = (requiredPermission) => {
+export const checkPermission = (requiredPermission) => {
   return async (req, res, next) => {
     try {
       const user = await User.findById(req.user.id).populate('officerRoleId');
@@ -37,4 +37,3 @@ const checkPermission = (requiredPermission) => {
   };
 };
 
-module.exports = { checkPermission };

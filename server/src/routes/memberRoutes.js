@@ -1,9 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const { getMembers } = require('../controllers/memberController');
-const { protect } = require('../middleware/authMiddleware');
-const { checkPermission } = require('../middleware/permissionMiddleware');
+import express from 'express';
+import { getMembers } from '../controllers/memberController.js';
+import { protect } from '../middleware/authMiddleware.js';
+import { checkPermission } from '../middleware/permissionMiddleware.js';
 
+const router = express.Router();
 router.get('/', protect, checkPermission('member.view'), getMembers);
 
-module.exports = router;
+export default router;

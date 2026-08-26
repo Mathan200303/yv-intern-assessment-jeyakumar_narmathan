@@ -1,9 +1,10 @@
-const MemberApplication = require('../models/MemberApplication');
-const Membership = require('../models/Membership');
-const MembershipType = require('../models/MembershipType');
-const AuditLog = require('../models/AuditLog');
 
-const submitApplication = async (req, res, next) => {
+import MemberApplication from '../models/MemberApplication.js';
+import Membership from '../models/Membership.js';
+import MembershipType from '../models/MembershipType.js';
+import AuditLog from '../models/AuditLog.js';
+
+export const submitApplication = async (req, res, next) => {
   try {
     const userId = req.user.id;
     const existingPending = await MemberApplication.findOne({ userId, status: 'PENDING' });
@@ -33,7 +34,7 @@ const submitApplication = async (req, res, next) => {
   }
 };
 
-const getApplications = async (req, res, next) => {
+export const getApplications = async (req, res, next) => {
   try {
     const { status, page = 1, limit = 10 } = req.query;
     const skip = (page - 1) * limit;
@@ -72,7 +73,7 @@ const getApplications = async (req, res, next) => {
   }
 };
 
-const approveApplication = async (req, res, next) => {
+export const approveApplication = async (req, res, next) => {
   try {
     const { id } = req.params;
     
@@ -122,7 +123,7 @@ const approveApplication = async (req, res, next) => {
   }
 };
 
-const rejectApplication = async (req, res, next) => {
+export const rejectApplication = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { reason } = req.body;
@@ -157,9 +158,3 @@ const rejectApplication = async (req, res, next) => {
   }
 };
 
-module.exports = {
-  submitApplication,
-  getApplications,
-  approveApplication,
-  rejectApplication
-};

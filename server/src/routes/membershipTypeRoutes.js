@@ -1,8 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const MembershipType = require('../models/MembershipType');
-const { protect } = require('../middleware/authMiddleware');
+import express from 'express';
+import MembershipType from '../models/MembershipType.js';
+import { protect } from '../middleware/authMiddleware.js';
 
+const router = express.Router();
 router.get('/', protect, async (req, res, next) => {
   try {
     const types = await MembershipType.find({ isActive: true });
@@ -12,4 +12,4 @@ router.get('/', protect, async (req, res, next) => {
   }
 });
 
-module.exports = router;
+export default router;

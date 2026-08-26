@@ -1,9 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const AuditLog = require('../models/AuditLog');
-const { protect } = require('../middleware/authMiddleware');
-const { checkPermission } = require('../middleware/permissionMiddleware');
+import express from 'express';
+import AuditLog from '../models/AuditLog.js';
+import { protect } from '../middleware/authMiddleware.js';
+import { checkPermission } from '../middleware/permissionMiddleware.js';
 
+const router = express.Router();
 router.get('/', protect, checkPermission('audit.view'), async (req, res, next) => {
   try {
     const page = parseInt(req.query.page) || 1;
@@ -29,4 +29,4 @@ router.get('/', protect, checkPermission('audit.view'), async (req, res, next) =
   }
 });
 
-module.exports = router;
+export default router;

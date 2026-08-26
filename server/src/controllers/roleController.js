@@ -1,8 +1,8 @@
-const OfficerRole = require('../models/OfficerRole');
-const User = require('../models/User');
-const AuditLog = require('../models/AuditLog');
+import OfficerRole from '../models/OfficerRole.js';
+import User from '../models/User.js';
+import AuditLog from '../models/AuditLog.js';
 
-const createRole = async (req, res, next) => {
+export const createRole = async (req, res, next) => {
   try {
     const { name, description, permissions } = req.body;
 
@@ -28,7 +28,7 @@ const createRole = async (req, res, next) => {
   }
 };
 
-const updatePermissions = async (req, res, next) => {
+export const updatePermissions = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { permissions } = req.body;
@@ -58,7 +58,7 @@ const updatePermissions = async (req, res, next) => {
   }
 };
 
-const assignRole = async (req, res, next) => {
+export const assignRole = async (req, res, next) => {
   try {
     const { id } = req.params; // user id
     const { roleId } = req.body;
@@ -92,7 +92,7 @@ const assignRole = async (req, res, next) => {
   }
 };
 
-const getPermissionsList = async (req, res, next) => {
+export const getPermissionsList = async (req, res, next) => {
   try {
     const keys = [
       'member.view',
@@ -108,7 +108,7 @@ const getPermissionsList = async (req, res, next) => {
   }
 };
 
-const getRoles = async (req, res, next) => {
+export const getRoles = async (req, res, next) => {
   try {
     const roles = await OfficerRole.find().select('name description permissions');
     res.status(200).json({ success: true, data: roles });
@@ -117,10 +117,3 @@ const getRoles = async (req, res, next) => {
   }
 };
 
-module.exports = {
-  createRole,
-  updatePermissions,
-  assignRole,
-  getPermissionsList,
-  getRoles
-};

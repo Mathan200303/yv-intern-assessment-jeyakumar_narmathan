@@ -1,9 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const { getPermissionsList } = require('../controllers/roleController');
-const { protect } = require('../middleware/authMiddleware');
-const { checkPermission } = require('../middleware/permissionMiddleware');
+import express from 'express';
+import { getPermissionsList } from '../controllers/roleController.js';
+import { protect } from '../middleware/authMiddleware.js';
+import { checkPermission } from '../middleware/permissionMiddleware.js';
 
+const router = express.Router();
 router.get('/', protect, checkPermission('role.manage'), getPermissionsList);
 
-module.exports = router;
+export default router;

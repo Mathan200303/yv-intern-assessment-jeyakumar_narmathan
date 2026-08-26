@@ -9,4 +9,5 @@ const ENDPOINTS = {
   MEMBERSHIP_TYPES: '/membership-types'
 };
 
-module.exports = ENDPOINTS;
+
+export default ENDPOINTS;

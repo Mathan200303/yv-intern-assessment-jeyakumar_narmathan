@@ -1,6 +1,7 @@
-const Membership = require('../models/Membership');
+import Membership from '../models/Membership.js';
+import User from '../models/User.js';
 
-const getMembers = async (req, res, next) => {
+export const getMembers = async (req, res, next) => {
   try {
     const { search, status, page = 1, limit = 10 } = req.query;
     const skip = (page - 1) * limit;
@@ -18,7 +19,8 @@ const getMembers = async (req, res, next) => {
           { email: { $regex: search, $options: 'i' } }
         ]
       };
-      const users = await require('../models/User').find(userQuery).select('_id');
+      
+     const users = await User.find(userQuery).select('_id');
       const userIds = users.map(u => u._id);
       query.userId = { $in: userIds };
     }
@@ -48,4 +50,4 @@ const getMembers = async (req, res, next) => {
   }
 };
 
-module.exports = { getMembers };
+

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const membershipTypeSchema = new mongoose.Schema({
   name: {
@@ -21,4 +21,4 @@ const membershipTypeSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('MembershipType', membershipTypeSchema);
+export default mongoose.model('MembershipType', membershipTypeSchema);
