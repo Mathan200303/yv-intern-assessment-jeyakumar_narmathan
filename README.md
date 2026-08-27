@@ -19,7 +19,7 @@
 Run `node seed.js` inside the `server` directory before starting the application. It will create the Chairman account and Membership Types.
 
 **Chairman Credentials:**
-- **Email:** chairman@.com
+- **Email:** chairman@gmail.com
 - **Password:** chairman123
 
 ## ✨ Features
